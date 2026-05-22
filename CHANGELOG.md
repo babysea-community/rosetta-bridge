@@ -4,6 +4,13 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## Unreleased
 
+## [0.1.10] - 2026-05-22
+
+### Changed
+
+- Adjusted advisory Snyk Code and IaC scans to avoid GitHub failure annotations while preserving SARIF upload, IaC reporting, and the enforced Open Source test.
+- Constrained GitHub Actions Codecov uploads to the explicit TypeScript LCOV report to avoid irrelevant uploader search warnings.
+
 ## [0.1.9] - 2026-05-22
 
 ### Added

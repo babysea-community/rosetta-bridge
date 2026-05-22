@@ -37,12 +37,12 @@
 
 <strong>Checks</strong>
 
-[![CircleCI Pipeline](https://img.shields.io/badge/circleci_pipeline-passed-003740?style=for-the-badge&logo=circleci&logoColor=white)](https://app.circleci.com/pipelines/github/babysea-community/rosetta-bridge)
-[![Codecov Coverage](https://img.shields.io/codecov/c/github/babysea-community/rosetta-bridge?style=for-the-badge&label=codecov-coverage&logo=codecov&logoColor=white&color=FF0077&token=R8UcQFs7mx)](https://codecov.io/github/babysea-community/rosetta-bridge)
-[![Snyk Security](https://img.shields.io/github/actions/workflow/status/babysea-community/rosetta-bridge/snyk-security.yml?branch=main&style=for-the-badge&label=snyk-security&logo=snyk&logoColor=white)](https://github.com/babysea-community/rosetta-bridge/actions/workflows/snyk-security.yml)
-[![Sentry Check](https://img.shields.io/github/actions/workflow/status/babysea-community/rosetta-bridge/sentry-check.yml?style=for-the-badge&label=sentry+check&logo=sentry&logoColor=white)](https://github.com/babysea-community/rosetta-bridge/actions/workflows/sentry-check.yml)
+[![CircleCI](https://img.shields.io/badge/circleci-passed-003740?style=for-the-badge&logo=circleci&logoColor=white)](https://dl.circleci.com/status-badge/redirect/circleci/2uTLcwc4naeNuKDP41es88/Ux5WMjvSopjxP29kJpU2sm/tree/main)
+[![Codecov](https://img.shields.io/codecov/c/github/babysea-community/rosetta-bridge?style=for-the-badge&label=codecov&logo=codecov&logoColor=white&color=FF0077&token=R8UcQFs7mx)](https://codecov.io/github/babysea-community/rosetta-bridge)
+[![Snyk](https://img.shields.io/github/actions/workflow/status/babysea-community/rosetta-bridge/snyk-security.yml?branch=main&style=for-the-badge&label=snyk&logo=snyk&logoColor=white)](https://github.com/babysea-community/rosetta-bridge/actions/workflows/snyk-security.yml)
+[![Sentry](https://img.shields.io/github/actions/workflow/status/babysea-community/rosetta-bridge/sentry-check.yml?style=for-the-badge&label=sentry&logo=sentry&logoColor=white)](https://github.com/babysea-community/rosetta-bridge/actions/workflows/sentry-check.yml)
 [![CodeQL](https://img.shields.io/github/actions/workflow/status/babysea-community/rosetta-bridge/codeql.yml?style=for-the-badge&label=codeql&logo=github&logoColor=white)](https://github.com/babysea-community/rosetta-bridge/actions/workflows/codeql.yml)
-[![Package Check](https://img.shields.io/github/actions/workflow/status/babysea-community/rosetta-bridge/publish-check.yml?style=for-the-badge&label=package+check&logo=npm&logoColor=white)](https://github.com/babysea-community/rosetta-bridge/actions/workflows/publish-check.yml)
+[![Package](https://img.shields.io/github/actions/workflow/status/babysea-community/rosetta-bridge/publish-check.yml?style=for-the-badge&label=package&logo=npm&logoColor=white)](https://github.com/babysea-community/rosetta-bridge/actions/workflows/publish-check.yml)
 
 <br/>
 
