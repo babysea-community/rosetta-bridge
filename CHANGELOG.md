@@ -4,6 +4,18 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## Unreleased
 
+## [0.1.9] - 2026-05-22
+
+### Added
+
+- Added a CircleCI package-check workflow for rosetta-bridge TypeScript lint/coverage/build/package validation, CLI smoke checks, and trusted `main` Codecov CLI upload when `CODECOV_TOKEN` is configured in CircleCI.
+- Added a Snyk Security workflow for Snyk Code SARIF upload, Open Source scanning and monitoring, and IaC reporting with `SNYK_TOKEN`.
+- Added a Shields.io CircleCI README badge that matches the project badge style.
+
+### Changed
+
+- Replaced the static Snyk README badge with a realtime Snyk Security workflow status badge.
+
 ## [0.1.8] - 2026-05-22
 
 ### Added
