@@ -4,6 +4,12 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## Unreleased
 
+## [0.2.1] - 2026-05-23
+
+### Changed
+
+- Expanded Dependabot version updates to check TypeScript dependencies daily and GitHub Actions weekly.
+
 ## [0.2.0] - 2026-05-22
 
 ### Changed
