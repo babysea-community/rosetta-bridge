@@ -4,6 +4,11 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## Unreleased
 
+### Fixed
+
+- Declared Node.js ambient types for CLI and test type-checking so TypeScript 6 dependency update checks can resolve `node:` imports.
+- Replaced Sentry URL trailing-slash regex normalization with a bounded string scan to avoid CodeQL ReDoS noise.
+
 ## [0.2.1] - 2026-05-23
 
 ### Changed
