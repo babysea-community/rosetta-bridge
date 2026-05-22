@@ -4,6 +4,12 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## Unreleased
 
+## [0.1.7] - 2026-05-22
+
+### Changed
+
+- Updated primitive deploy automation to sync GitHub repository description, homepage, and topics from TypeScript package metadata.
+
 ## [0.1.6] - 2026-05-22
 
 ### Changed
