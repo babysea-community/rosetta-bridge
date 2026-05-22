@@ -4,7 +4,7 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## Unreleased
 
-## [0.1.10] - 2026-05-22
+## [0.2.0] - 2026-05-22
 
 ### Changed
 
