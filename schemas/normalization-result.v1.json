@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.babysea.ai/rosetta-bridge/normalization-result.v1.json",
+  "title": "Rosetta Bridge Normalization Result v1",
+  "description": "Debug and test envelope emitted after canonical input is normalized and converted to a provider payload.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "model_id",
+    "provider",
+    "provider_order",
+    "canonical_input",
+    "provider_payload",
+    "generated_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "normalization-result.v1"
+    },
+    "model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "provider": {
+      "type": "string",
+      "minLength": 1
+    },
+    "provider_order": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "canonical_input": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^request_[a-z0-9]+(?:_[a-z0-9]+)*$"
+      },
+      "additionalProperties": {
+        "oneOf": [
+          { "type": "string" },
+          { "type": "number" },
+          { "type": "boolean" },
+          { "type": "null" },
+          {
+            "type": "array",
+            "items": { "type": "string", "format": "uri", "pattern": "^https?://" }
+          }
+        ]
+      }
+    },
+    "provider_payload": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

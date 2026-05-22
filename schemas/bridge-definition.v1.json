@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.babysea.ai/rosetta-bridge/bridge-definition.v1.json",
+  "title": "Rosetta Bridge Definition v1",
+  "description": "Portable manifest for a rosetta-bridge normalization contract. Executable adapter functions are intentionally not represented here.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "model_id", "supported_providers", "core_fields"],
+  "properties": {
+    "schema_version": {
+      "const": "bridge-definition.v1"
+    },
+    "model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "supported_providers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "provider_order": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "core_fields": {
+      "$ref": "#/$defs/fieldShape"
+    },
+    "option_fields": {
+      "$ref": "#/$defs/fieldShape"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "fieldShape": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^request_[a-z0-9]+(?:_[a-z0-9]+)*$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/fieldSpec"
+      }
+    },
+    "fieldSpec": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type"],
+          "properties": {
+            "type": { "const": "string" },
+            "label": { "type": "string" },
+            "description": { "type": "string" },
+            "required": { "type": "boolean" },
+            "default": { "type": "string" },
+            "minLength": { "type": "integer", "minimum": 0 },
+            "maxLength": { "type": "integer", "minimum": 0 },
+            "pattern": { "type": "string" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type"],
+          "properties": {
+            "type": { "const": "url" },
+            "label": { "type": "string" },
+            "description": { "type": "string" },
+            "required": { "type": "boolean" },
+            "default": { "type": "string", "format": "uri", "pattern": "^https?://" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "values"],
+          "properties": {
+            "type": { "const": "enum" },
+            "label": { "type": "string" },
+            "description": { "type": "string" },
+            "required": { "type": "boolean" },
+            "default": { "type": "string" },
+            "values": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": { "type": "string" }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "values"],
+          "properties": {
+            "type": { "const": "number-enum" },
+            "label": { "type": "string" },
+            "description": { "type": "string" },
+            "required": { "type": "boolean" },
+            "default": { "type": "number" },
+            "values": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": { "type": "number" }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type"],
+          "properties": {
+            "type": { "const": "number" },
+            "label": { "type": "string" },
+            "description": { "type": "string" },
+            "required": { "type": "boolean" },
+            "default": { "type": "number" },
+            "min": { "type": "number" },
+            "max": { "type": "number" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type"],
+          "properties": {
+            "type": { "const": "integer" },
+            "label": { "type": "string" },
+            "description": { "type": "string" },
+            "required": { "type": "boolean" },
+            "default": { "type": "integer" },
+            "min": { "type": "integer" },
+            "max": { "type": "integer" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type"],
+          "properties": {
+            "type": { "const": "boolean" },
+            "label": { "type": "string" },
+            "description": { "type": "string" },
+            "required": { "type": "boolean" },
+            "default": { "type": "boolean" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type"],
+          "properties": {
+            "type": { "const": "url-array" },
+            "label": { "type": "string" },
+            "description": { "type": "string" },
+            "required": { "type": "boolean" },
+            "default": {
+              "type": "array",
+              "items": { "type": "string", "format": "uri", "pattern": "^https?://" }
+            },
+            "minItems": { "type": "integer", "minimum": 0 },
+            "maxItems": { "type": "integer", "minimum": 0 }
+          }
+        }
+      ]
+    }
+  }
+}

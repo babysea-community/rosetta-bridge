@@ -1,0 +1,26 @@
+{
+  "schema_version": "bridge-definition.v1",
+  "model_id": "example/media-model",
+  "supported_providers": ["provider_a", "provider_b"],
+  "provider_order": ["provider_a", "provider_b"],
+  "core_fields": {
+    "request_prompt": {
+      "type": "string",
+      "required": true,
+      "minLength": 1
+    },
+    "request_aspect_ratio": {
+      "type": "enum",
+      "values": ["1:1", "16:9", "21:9"],
+      "default": "1:1"
+    },
+    "request_output_format": {
+      "type": "enum",
+      "values": ["png", "jpg"],
+      "default": "png"
+    }
+  },
+  "metadata": {
+    "why_invalid": "Provider B cannot render 21:9, so exposing 21:9 makes fallback unsafe. Keep public capabilities to the provider intersection."
+  }
+}

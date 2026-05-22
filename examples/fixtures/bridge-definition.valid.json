@@ -1,0 +1,38 @@
+{
+  "schema_version": "bridge-definition.v1",
+  "model_id": "example/media-model",
+  "supported_providers": ["provider_a", "provider_b"],
+  "provider_order": ["provider_a", "provider_b"],
+  "core_fields": {
+    "request_prompt": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "request_aspect_ratio": {
+      "type": "enum",
+      "values": ["1:1", "16:9"],
+      "default": "1:1"
+    },
+    "request_output_format": {
+      "type": "enum",
+      "values": ["png", "jpg"],
+      "default": "png"
+    },
+    "request_input_assets": {
+      "type": "url-array",
+      "maxItems": 1,
+      "default": []
+    }
+  },
+  "option_fields": {
+    "request_moderation": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "metadata": {
+    "adapter_note": "Provider B maps request_output_format=jpg to jpeg."
+  }
+}
