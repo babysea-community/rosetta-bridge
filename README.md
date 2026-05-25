@@ -13,7 +13,7 @@
 </p>
 
 <p>
-  <strong>One public request. Many provider dialects. No silent schema drift.</strong>
+  <strong>One public request • Many provider dialects • No silent schema drift</strong>
 </p>
 
 <br />
@@ -34,7 +34,8 @@
 
 <strong>Assistants & bots</strong>
 
-![OpenAI](https://custom-icon-badges.demolab.com/badge/openai-000000?style=for-the-badge&logo=openai&logoColor=white)
+![Claude](https://img.shields.io/badge/claude-D97757?style=for-the-badge&logo=claude&logoColor=white)
+![OpenAI](https://custom-icon-badges.demolab.com/badge/gpt-000000?style=for-the-badge&logo=openai&logoColor=white)
 ![Dependabot](https://img.shields.io/badge/dependabot-025E8C?style=for-the-badge&logo=dependabot&logoColor=white)
 
 <br/>
