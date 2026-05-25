@@ -1,7 +1,7 @@
 <div align="center">
 
 <p>
-  <img src="public/icon.png" width="100" alt="Rosetta Bridge icon" />
+  <img src="public/icon.png" width="140" alt="Rosetta Bridge icon" />
 </p>
 
 <h1>
@@ -18,16 +18,13 @@
 
 <br />
 
+<strong>Quick links</strong>
+
 [![BabySea Blog](https://custom-icon-badges.demolab.com/badge/babysea-deep_dive-0D9488?style=for-the-badge&logo=babysea&logoColor=white)](https://babysea.ai/blog/how-babysea-built-strict-request-normalization-with-json-schema-and-typescript)
 
 <br />
 
-<img src="public/card.png" alt="Rosetta Bridge card" />
-
-<br/>
-<br/>
-
-<strong>Project</strong>
+<strong>Project details</strong>
 
 [![BabySea OSS Primitive](https://custom-icon-badges.demolab.com/badge/oss-primitive-EA580c?style=for-the-badge&logo=babysea&logoColor=white)](#babysea-oss-taxonomy)
 [![BabySea OSS Status Production](https://custom-icon-badges.demolab.com/badge/oss_status-production-C026D3?style=for-the-badge&logo=babysea&logoColor=white)](#status)
@@ -35,15 +32,16 @@
 
 <br/>
 
-<strong>Assistants & Bots</strong>
+<strong>Assistants & bots</strong>
 
-![Dependabot](https://img.shields.io/badge/dependabot-025E8C?style=for-the-badge&logo=dependabot&logoColor=white)
 ![OpenAI](https://custom-icon-badges.demolab.com/badge/openai-000000?style=for-the-badge&logo=openai&logoColor=white)
+![Dependabot](https://img.shields.io/badge/dependabot-025E8C?style=for-the-badge&logo=dependabot&logoColor=white)
 
 <br/>
 
 <strong>Checks</strong>
 
+[![GitLabCI](https://img.shields.io/gitlab/pipeline-status/babysea/rosetta-bridge?branch=main&style=for-the-badge&label=gitlabci&logo=gitlab&logoColor=white&color=FC6D26)](https://gitlab.com/babysea/rosetta-bridge/-/commits/main)
 [![CircleCI](https://img.shields.io/badge/circleci-passed-003740?style=for-the-badge&logo=circleci&logoColor=white)](https://dl.circleci.com/status-badge/redirect/circleci/2uTLcwc4naeNuKDP41es88/Ux5WMjvSopjxP29kJpU2sm/tree/main)
 [![Codecov](https://img.shields.io/codecov/c/github/babysea-community/rosetta-bridge?style=for-the-badge&label=codecov&logo=codecov&logoColor=white&color=FF0077&token=R8UcQFs7mx)](https://codecov.io/github/babysea-community/rosetta-bridge)
 [![Snyk](https://img.shields.io/github/actions/workflow/status/babysea-community/rosetta-bridge/snyk-security.yml?branch=main&style=for-the-badge&label=snyk&logo=snyk&logoColor=white)](https://github.com/babysea-community/rosetta-bridge/actions/workflows/snyk-security.yml)
@@ -59,9 +57,13 @@
 [![TypeScript](https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![Provider Adapters](https://img.shields.io/badge/runtime-provider_adapters-4E56A6?style=for-the-badge)](#5-architecture)
 
+<br/>
+
+<img src="public/card.png" alt="Rosetta Bridge card" />
+
 </div>
 
----
+<br/>
 
 ## BabySea OSS taxonomy
 

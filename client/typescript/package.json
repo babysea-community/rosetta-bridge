@@ -1,10 +1,10 @@
 {
   "name": "rosetta-bridge",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Request normalization engine for multi-provider inference workloads. Built with JSON Schema and TypeScript adapters.",
   "license": "Apache-2.0",
   "author": "BabySea, Inc. <dev@babysea.ai>",
-  "homepage": "https://github.com/babysea-community/rosetta-bridge",
+  "homepage": "https://babysea.ai/blog/how-babysea-built-strict-request-normalization-with-json-schema-and-typescript",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/babysea-community/rosetta-bridge.git",
@@ -13,16 +13,15 @@
   "keywords": [
     "babysea",
     "open-source",
-    "primitive",
     "ai-infrastructure",
     "control-plane",
     "execution-layer",
-    "developer-tools",
-    "generative-ai",
     "inference-providers",
-    "schema-normalization",
+    "developer-tools",
+    "creative-tools",
+    "generative-ai",
+    "generative-media",
     "type-safe",
-    "provider-adapters",
     "request-schema"
   ],
   "main": "dist/index.js",
@@ -40,15 +39,15 @@
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts --clean && tsup src/cli.ts --format esm --dts --clean=false",
     "test": "vitest run",
-    "test:coverage": "vitest run --coverage --coverage.reporter=text --coverage.reporter=lcov",
+    "test:coverage": "vitest run --coverage --coverage.reporter=text --coverage.reporter=lcov --coverage.reporter=cobertura",
     "lint": "tsc --noEmit"
   },
   "devDependencies": {
-    "@types/node": "^25.9.1",
-    "@vitest/coverage-v8": "^4.1.7",
+    "@types/node": "^20.19.39",
+    "@vitest/coverage-v8": "^4.1.5",
     "tsup": "^8.5.1",
-    "typescript": "^6.0.3",
-    "vitest": "^4.1.7"
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.5"
   },
   "engines": {
     "node": ">=18"

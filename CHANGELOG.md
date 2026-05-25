@@ -4,9 +4,17 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## Unreleased
 
+## [0.2.3] - 2026-05-25
+
+### Added
+
+- Added a GitLab CI pipeline for TypeScript lint, coverage, build, CLI smoke checks, package validation, dependency audit, secret scanning, Code Quality, SAST, and Dependency Scanning.
+- Added GitLab Codecov provider recognition, Cobertura coverage output, and a README GitLabCI badge.
+
+## [0.2.2] - 2026-05-23
+
 ### Fixed
 
-- Added TypeScript 6 deprecation handling for declaration builds.
 - Declared Node.js ambient types for CLI and test type-checking so TypeScript 6 dependency update checks can resolve `node:` imports.
 - Replaced Sentry URL trailing-slash regex normalization with a bounded string scan to avoid CodeQL ReDoS noise.
 
