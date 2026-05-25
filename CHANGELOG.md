@@ -10,6 +10,14 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 - Added GitHub issue templates (`.github/ISSUE_TEMPLATE/bug_report.yml`, `feature_request.yml`, `config.yml`) and `.github/PULL_REQUEST_TEMPLATE.md` so contributors get a consistent intake form. The template set is identical across all BabySea OSS repos (primitives, starters, SDK) so it can be reused without project-specific adjustments.
 
+### Changed
+
+- Refreshed `client/typescript/package-lock.json` to resolve `vitest` and `@vitest/coverage-v8` to the latest 4.1.x patch (4.1.7) within the existing `^4.1.5` range. No public API or runtime change.
+
+### Security
+
+- Triaged GitHub Dependabot PRs in the standalone repository: merged the `vitest` 4.1.7 and `@vitest/coverage-v8` 4.1.7 patch bumps; closed the `typescript@6.0.3` major (CI failure on the TypeScript-package job) and the `@types/node@25` major (jumps 5 majors past the supported Node 22 runtime — risks surfacing Node 23/24/25-only APIs to downstream consumers).
+
 ## [0.2.3] - 2026-05-25
 
 ### Added
