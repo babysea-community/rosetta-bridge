@@ -18,25 +18,12 @@
 
 <br />
 
-<strong>Quick links</strong>
-
-[![BabySea Blog](https://custom-icon-badges.demolab.com/badge/babysea-deep_dive-0D9488?style=for-the-badge&logo=babysea&logoColor=white)](https://babysea.ai/blog/how-babysea-built-strict-request-normalization-with-json-schema-and-typescript)
-
-<br />
-
 <strong>Project details</strong>
 
+[![BabySea Blog](https://custom-icon-badges.demolab.com/badge/babysea-blog-0D9488?style=for-the-badge&logo=babysea&logoColor=white)](https://babysea.ai/blog/how-babysea-built-strict-request-normalization-with-json-schema-and-typescript)
 [![BabySea OSS Primitive](https://custom-icon-badges.demolab.com/badge/oss-primitive-EA580c?style=for-the-badge&logo=babysea&logoColor=white)](#babysea-oss-taxonomy)
 [![BabySea OSS Status Production](https://custom-icon-badges.demolab.com/badge/oss_status-production-C026D3?style=for-the-badge&logo=babysea&logoColor=white)](#status)
 [![License](https://custom-icon-badges.demolab.com/badge/license-apache_2.0-059669?style=for-the-badge&logo=apache&logoColor=white)](LICENSE)
-
-<br/>
-
-<strong>Assistants & bots</strong>
-
-![Claude](https://img.shields.io/badge/claude-D97757?style=for-the-badge&logo=claude&logoColor=white)
-![OpenAI](https://custom-icon-badges.demolab.com/badge/gpt-000000?style=for-the-badge&logo=openai&logoColor=white)
-![Dependabot](https://img.shields.io/badge/dependabot-025E8C?style=for-the-badge&logo=dependabot&logoColor=white)
 
 <br/>
 
@@ -45,7 +32,7 @@
 [![GitLabCI](https://img.shields.io/gitlab/pipeline-status/babysea/rosetta-bridge?branch=main&style=for-the-badge&label=gitlabci&logo=gitlab&logoColor=white&color=FC6D26)](https://gitlab.com/babysea/rosetta-bridge/-/commits/main)
 [![CircleCI](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fcircleci.com%2Fapi%2Fv1.1%2Fproject%2Fcircleci%2F2uTLcwc4naeNuKDP41es88%2FUx5WMjvSopjxP29kJpU2sm%2Ftree%2Fmain%3Flimit%3D1&query=%24%5B0%5D.status&style=for-the-badge&logo=circleci&logoColor=white&label=circleci&color=003740)](https://dl.circleci.com/status-badge/redirect/circleci/2uTLcwc4naeNuKDP41es88/Ux5WMjvSopjxP29kJpU2sm/tree/main)
 [![Codecov](https://img.shields.io/codecov/c/github/babysea-community/rosetta-bridge?style=for-the-badge&label=codecov&logo=codecov&logoColor=white&color=FF0077&token=R8UcQFs7mx)](https://codecov.io/github/babysea-community/rosetta-bridge)
-[![Sentry](https://img.shields.io/github/actions/workflow/status/babysea-community/rosetta-bridge/sentry-check.yml?style=for-the-badge&label=sentry&logo=sentry&logoColor=white)](https://github.com/babysea-community/rosetta-bridge/actions/workflows/sentry-check.yml)
+[![Sentry](https://img.shields.io/github/actions/workflow/status/babysea-community/rosetta-bridge/sentry-check.yml?style=for-the-badge&label=sentry&logo=sentry&logoColor=white&color=181225)](https://github.com/babysea-community/rosetta-bridge/actions/workflows/sentry-check.yml)
 [![CodeQL](https://img.shields.io/github/actions/workflow/status/babysea-community/rosetta-bridge/codeql.yml?style=for-the-badge&label=codeql&logo=github&logoColor=white)](https://github.com/babysea-community/rosetta-bridge/actions/workflows/codeql.yml)
 [![Package](https://img.shields.io/github/actions/workflow/status/babysea-community/rosetta-bridge/publish-check.yml?style=for-the-badge&label=package&logo=npm&logoColor=white)](https://github.com/babysea-community/rosetta-bridge/actions/workflows/publish-check.yml)
 
@@ -231,7 +218,7 @@ cd /path/to/your-app
 npm install /path/to/rosetta-bridge/client/typescript
 ```
 
-Runtime targets Node.js 18+. Local development and tests use the Vitest/Vite toolchain and require Node.js 20.19+ or 22.12+.
+Runtime targets Node.js 22+. Local development and tests use the Vitest/Vite toolchain and require Node.js 22.12+.
 
 ### Define a public schema
 

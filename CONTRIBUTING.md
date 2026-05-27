@@ -40,7 +40,7 @@ When a change touches these areas, update the matching docs before opening a PR:
 
 ## Development flow
 
-The published SDK targets Node.js 18+ at runtime. Local TypeScript SDK development uses the Vitest/Vite toolchain and requires Node.js 20.19+ or 22.12+.
+The published SDK targets Node.js 22+ at runtime. Local TypeScript SDK development uses the Vitest/Vite toolchain and requires Node.js 22.12+.
 
 ```bash
 git clone https://github.com/babysea-community/rosetta-bridge

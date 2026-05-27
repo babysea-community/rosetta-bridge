@@ -8,7 +8,7 @@ Use this package from trusted backend code before provider dispatch. It does not
 
 ## Install from source
 
-Runtime targets Node.js 18+. Local development and tests use the Vitest/Vite toolchain and require Node.js 20.19+ or 22.12+.
+Runtime targets Node.js 22+. Local development and tests use the Vitest/Vite toolchain and require Node.js 22.12+.
 
 ```bash
 cd client/typescript
