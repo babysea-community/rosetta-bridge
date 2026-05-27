@@ -1,7 +1,7 @@
 <div align="center">
 
 <p>
-  <img src="public/icon.png" width="140" alt="Rosetta Bridge icon" />
+  <img src="public/icon.png" width="120" alt="Rosetta Bridge icon" />
 </p>
 
 <h1>
@@ -45,7 +45,6 @@
 [![GitLabCI](https://img.shields.io/gitlab/pipeline-status/babysea/rosetta-bridge?branch=main&style=for-the-badge&label=gitlabci&logo=gitlab&logoColor=white&color=FC6D26)](https://gitlab.com/babysea/rosetta-bridge/-/commits/main)
 [![CircleCI](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fcircleci.com%2Fapi%2Fv1.1%2Fproject%2Fcircleci%2F2uTLcwc4naeNuKDP41es88%2FUx5WMjvSopjxP29kJpU2sm%2Ftree%2Fmain%3Flimit%3D1&query=%24%5B0%5D.status&style=for-the-badge&logo=circleci&logoColor=white&label=circleci&color=003740)](https://dl.circleci.com/status-badge/redirect/circleci/2uTLcwc4naeNuKDP41es88/Ux5WMjvSopjxP29kJpU2sm/tree/main)
 [![Codecov](https://img.shields.io/codecov/c/github/babysea-community/rosetta-bridge?style=for-the-badge&label=codecov&logo=codecov&logoColor=white&color=FF0077&token=R8UcQFs7mx)](https://codecov.io/github/babysea-community/rosetta-bridge)
-[![Snyk](https://img.shields.io/github/actions/workflow/status/babysea-community/rosetta-bridge/snyk-security.yml?branch=main&style=for-the-badge&label=snyk&logo=snyk&logoColor=white)](https://github.com/babysea-community/rosetta-bridge/actions/workflows/snyk-security.yml)
 [![Sentry](https://img.shields.io/github/actions/workflow/status/babysea-community/rosetta-bridge/sentry-check.yml?style=for-the-badge&label=sentry&logo=sentry&logoColor=white)](https://github.com/babysea-community/rosetta-bridge/actions/workflows/sentry-check.yml)
 [![CodeQL](https://img.shields.io/github/actions/workflow/status/babysea-community/rosetta-bridge/codeql.yml?style=for-the-badge&label=codeql&logo=github&logoColor=white)](https://github.com/babysea-community/rosetta-bridge/actions/workflows/codeql.yml)
 [![Package](https://img.shields.io/github/actions/workflow/status/babysea-community/rosetta-bridge/publish-check.yml?style=for-the-badge&label=package&logo=npm&logoColor=white)](https://github.com/babysea-community/rosetta-bridge/actions/workflows/publish-check.yml)
@@ -99,37 +98,37 @@ BabySea OSS projects are published into three status levels:
 ## Table of contents
 
 1. [Overview](#1-overview)
-   - [What this is](#what-this-is)
-   - [Short version](#short-version)
-   - [Production lineage](#production-lineage)
-   - [Grounding rule](#grounding-rule)
-   - [Adoption path](#adoption-path)
+    - [What this is](#what-this-is)
+    - [Short version](#short-version)
+    - [Production lineage](#production-lineage)
+    - [Grounding rule](#grounding-rule)
+    - [Adoption path](#adoption-path)
 2. [Stack contract](#2-stack-contract)
 3. [Terminology](#3-terminology)
 4. [Boundaries](#4-boundaries)
 5. [Architecture](#5-architecture)
 6. [Quick start](#6-quick-start)
-   - [Build the TypeScript SDK](#build-the-typescript-sdk)
-   - [Define a public schema](#define-a-public-schema)
-   - [Map provider payloads](#map-provider-payloads)
-   - [Use the CLI](#use-the-cli)
+    - [Build the TypeScript SDK](#build-the-typescript-sdk)
+    - [Define a public schema](#define-a-public-schema)
+    - [Map provider payloads](#map-provider-payloads)
+    - [Use the CLI](#use-the-cli)
 7. [Core capabilities](#7-core-capabilities)
-   - [Why it's different](#why-its-different)
-   - [The bug this prevents](#the-bug-this-prevents)
-   - [Core invariants](#core-invariants)
-   - [Production-derived schema discipline](#production-derived-schema-discipline)
-   - [Pricing-sensitive core fields](#pricing-sensitive-core-fields)
-   - [Fail-before-dispatch by design](#fail-before-dispatch-by-design)
+    - [Why it's different](#why-its-different)
+    - [The bug this prevents](#the-bug-this-prevents)
+    - [Core invariants](#core-invariants)
+    - [Production-derived schema discipline](#production-derived-schema-discipline)
+    - [Pricing-sensitive core fields](#pricing-sensitive-core-fields)
+    - [Fail-before-dispatch by design](#fail-before-dispatch-by-design)
 8. [Production readiness](#8-production-readiness)
-   - [Enterprise posture](#enterprise-posture)
-   - [Configuration surface](#configuration-surface)
-   - [Production deployment](#production-deployment)
-   - [Release gates](#release-gates)
-   - [Production checklist](#production-checklist)
-   - [Monitoring](#monitoring)
-   - [Backup and disaster recovery](#backup-and-disaster-recovery)
-   - [Secret rotation](#secret-rotation)
-   - [Troubleshooting](#troubleshooting)
+    - [Enterprise posture](#enterprise-posture)
+    - [Configuration surface](#configuration-surface)
+    - [Production deployment](#production-deployment)
+    - [Release gates](#release-gates)
+    - [Production checklist](#production-checklist)
+    - [Monitoring](#monitoring)
+    - [Backup and disaster recovery](#backup-and-disaster-recovery)
+    - [Secret rotation](#secret-rotation)
+    - [Troubleshooting](#troubleshooting)
 9. [Version surface](#9-version-surface)
 10. [Community](#10-community)
     - [Who's using it](#whos-using-it)
@@ -165,27 +164,27 @@ Define a public bridge manifest, keep provider-specific mapping inside adapters,
 
 ## 2. Stack contract
 
-| Layer                 | Required stack                                      | Runtime responsibility                                                                                    |
-| :-------------------- | :-------------------------------------------------- | :-------------------------------------------------------------------------------------------------------- |
-| Provider contract     | Provider docs, OpenAPI, JSON Schema, or typed notes | Record the external provider shape and intentional exclusions outside the public request.                 |
-| Public request schema | `rosetta-bridge` field specs                        | Validate input, apply defaults, reject unknown fields, and keep provider-only names out of customer APIs. |
-| Provider adapter      | TypeScript mapper functions                         | Convert normalized request fields into one provider-native payload.                                       |
-| Public contract       | JSON Schema Draft 2020-12                           | Version bridge manifests and normalization-result envelopes for docs, SDKs, and tests.                    |
-| Integration boundary  | Your backend, database, billing, queues, and SDKs   | Own auth, persistence, rate limits, provider calls, webhooks, and dispatch outside the bridge.            |
+| Layer                | Required stack                                        | Runtime responsibility                                                                                     |
+| :------------------- | :---------------------------------------------------- | :--------------------------------------------------------------------------------------------------------- |
+| Provider contract    | Provider docs, OpenAPI, JSON Schema, or typed notes   | Record the external provider shape and intentional exclusions outside the public request.                   |
+| Public request schema | `rosetta-bridge` field specs                         | Validate input, apply defaults, reject unknown fields, and keep provider-only names out of customer APIs.  |
+| Provider adapter     | TypeScript mapper functions                           | Convert normalized request fields into one provider-native payload.                                        |
+| Public contract      | JSON Schema Draft 2020-12                             | Version bridge manifests and normalization-result envelopes for docs, SDKs, and tests.                     |
+| Integration boundary | Your backend, database, billing, queues, and SDKs     | Own auth, persistence, rate limits, provider calls, webhooks, and dispatch outside the bridge.             |
 
 No hosted gateway, provider execution, queue worker, billing system, or routing service is part of this version contract.
 
 ## 3. Terminology
 
-| Term                    | Meaning in this package                                                                                                                                     |
-| :---------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Core field              | Provider-agnostic request field such as `request_prompt`, `request_aspect_ratio`, `request_output_format`, or `request_duration_seconds`.                   |
-| Option field            | Public tuning field such as `request_seed`, `request_negative_prompt`, `request_enhance_prompt`, or `request_guidance_scale`.                               |
-| Provider field          | Provider-native API field. Provider names stay inside adapters, not in the public request schema.                                                           |
-| Provider adapter        | Converter with `mapCore`, `mapOptions`, and optional `mapStructured` functions.                                                                             |
-| Structured adapter      | Explicit exception for providers whose payload must be assembled as nested objects or arrays.                                                               |
+| Term                    | Meaning in this package                                                                                                               |
+| :---------------------- | :------------------------------------------------------------------------------------------------------------------------------------ |
+| Core field              | Provider-agnostic request field such as `request_prompt`, `request_aspect_ratio`, `request_output_format`, or `request_duration_seconds`. |
+| Option field            | Public tuning field such as `request_seed`, `request_negative_prompt`, `request_enhance_prompt`, or `request_guidance_scale`.         |
+| Provider field          | Provider-native API field. Provider names stay inside adapters, not in the public request schema.                                      |
+| Provider adapter        | Converter with `mapCore`, `mapOptions`, and optional `mapStructured` functions.                                                        |
+| Structured adapter      | Explicit exception for providers whose payload must be assembled as nested objects or arrays.                                          |
 | Provider-order sentinel | `request_provider_order: 'fastest'` expands to the bridge's default provider order; the host application still chooses the active provider before dispatch. |
-| Intersection            | The safe overlap of capabilities across active providers: ratios, formats, input limits, duration, resolution, audio, and other pricing dimensions.         |
+| Intersection            | The safe overlap of capabilities across active providers: ratios, formats, input limits, duration, resolution, audio, and other pricing dimensions. |
 
 ## 4. Boundaries
 
@@ -250,11 +249,7 @@ const bridge = new RosettaBridge({
       supportedFormats: ['png', 'jpg'],
       defaultAspectRatio: '1:1',
       defaultFormat: 'png',
-      providerOrders: [
-        'fastest',
-        'provider_a,provider_b',
-        'provider_b,provider_a',
-      ],
+      providerOrders: ['fastest', 'provider_a,provider_b', 'provider_b,provider_a'],
       defaultProviderOrder: 'fastest',
     }),
     options: {
@@ -338,14 +333,14 @@ JSON bridge manifests can validate requests and emit request JSON Schema. Mappin
 
 Provider integrations fail when equivalent request fields drift across vendors. `rosetta-bridge` makes that drift explicit at the adapter boundary and rejects unsafe input before dispatch.
 
-| Problem                              | How `rosetta-bridge` solves it                                                               |
-| :----------------------------------- | :------------------------------------------------------------------------------------------- |
-| **Schema drift.**                    | Expose one public `request_*` field and map it per provider.                                 |
-| **Failover breaks semantics.**       | Author public capabilities from the provider intersection, not the union.                    |
-| **Mappers become unreadable.**       | Separate common fields in `mapCore` from tuning fields in `mapOptions`.                      |
-| **Nested payloads need exceptions.** | Use `mapStructured` only when flat core/options mapping cannot express the provider payload. |
-| **Unknown fields sneak through.**    | Strict normalization rejects undeclared public fields before provider dispatch.              |
-| **Provider defaults vary.**          | Public defaults live in field specs instead of being inherited silently from providers.      |
+| Problem                                | How `rosetta-bridge` solves it                                                                 |
+| :------------------------------------- | :---------------------------------------------------------------------------------------------- |
+| **Schema drift.**                      | Expose one public `request_*` field and map it per provider.                                     |
+| **Failover breaks semantics.**         | Author public capabilities from the provider intersection, not the union.                        |
+| **Mappers become unreadable.**         | Separate common fields in `mapCore` from tuning fields in `mapOptions`.                          |
+| **Nested payloads need exceptions.**   | Use `mapStructured` only when flat core/options mapping cannot express the provider payload.      |
+| **Unknown fields sneak through.**      | Strict normalization rejects undeclared public fields before provider dispatch.                   |
+| **Provider defaults vary.**            | Public defaults live in field specs instead of being inherited silently from providers.           |
 
 ### The bug this prevents
 
@@ -371,14 +366,14 @@ Without a normalization boundary, failover can change semantics after validation
 
 ### Production-derived schema discipline
 
-| BabySea production rule                          | `rosetta-bridge` rule                                                                                      |
-| :----------------------------------------------- | :--------------------------------------------------------------------------------------------------------- |
-| Raw provider schema mirrors provider docs.       | Keep provider-native fields in adapter code or integration notes.                                          |
-| Refined schema is strict and customer-facing.    | `normalize(...)` rejects unknown fields and accepts only declared `request_*` fields.                      |
-| Defaults live in the refined public schema.      | Field specs own defaults; adapters do not inherit provider defaults silently.                              |
-| Capability intersections protect failover.       | Ratios, formats, input limits, duration, resolution, and audio must be safe for every registered provider. |
-| Core pricing fields stay inspectable.            | Duration, resolution, audio, and input assets remain core fields before billing or routing decisions.      |
-| Provider-specific tuning maps after core fields. | `mapOptions(...)` owns knobs such as seed, moderation, prompt enhancement, and negative prompt.            |
+| BabySea production rule                         | `rosetta-bridge` rule                                                                                  |
+| :---------------------------------------------- | :----------------------------------------------------------------------------------------------------- |
+| Raw provider schema mirrors provider docs.      | Keep provider-native fields in adapter code or integration notes.                                      |
+| Refined schema is strict and customer-facing.   | `normalize(...)` rejects unknown fields and accepts only declared `request_*` fields.                   |
+| Defaults live in the refined public schema.     | Field specs own defaults; adapters do not inherit provider defaults silently.                           |
+| Capability intersections protect failover.      | Ratios, formats, input limits, duration, resolution, and audio must be safe for every registered provider. |
+| Core pricing fields stay inspectable.           | Duration, resolution, audio, and input assets remain core fields before billing or routing decisions.   |
+| Provider-specific tuning maps after core fields. | `mapOptions(...)` owns knobs such as seed, moderation, prompt enhancement, and negative prompt.         |
 
 ### Pricing-sensitive core fields
 
@@ -393,13 +388,13 @@ Adapters may rename or type-convert those values, but the host application can i
 
 ### Fail-before-dispatch by design
 
-| Failure                                       | Behavior                                                                           |
-| :-------------------------------------------- | :--------------------------------------------------------------------------------- |
-| Missing required field                        | Throws `ValidationError` before adapter execution.                                 |
-| Unknown public field                          | Throws `ValidationError` by default.                                               |
-| Unsupported enum or number value              | Throws `ValidationError`.                                                          |
-| Invalid URL in asset fields                   | Throws `ValidationError`.                                                          |
-| Unsupported provider                          | Throws `ValidationError`.                                                          |
+| Failure                                      | Behavior                                                                 |
+| :------------------------------------------- | :----------------------------------------------------------------------- |
+| Missing required field                       | Throws `ValidationError` before adapter execution.                       |
+| Unknown public field                         | Throws `ValidationError` by default.                                     |
+| Unsupported enum or number value             | Throws `ValidationError`.                                                |
+| Invalid URL in asset fields                  | Throws `ValidationError`.                                                |
+| Unsupported provider                         | Throws `ValidationError`.                                                |
 | Adapter returns a top-level `undefined` value | Omits that provider field while preserving `false`, `0`, `null`, and empty values. |
 
 Run the bridge before enqueueing or dispatch so downstream systems consume only validated canonical requests.
@@ -412,28 +407,28 @@ For the full schema discipline, see [`docs/normalization-rules.md`](docs/normali
 
 ### Enterprise posture
 
-| Area                 | Production rule                                                                                                  | Evidence                                                                                                                                                 |
-| :------------------- | :--------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Public contract      | Public fields use lowercase snake-case `request_*` names and reject unknown fields by default.                   | `client/typescript/src/index.ts`, [`schemas/bridge-definition.v1.json`](schemas/bridge-definition.v1.json)                                               |
-| Adapter boundary     | Provider-native fields stay inside `mapCore`, `mapOptions`, or documented `mapStructured` exceptions.            | [`docs/architecture.md`](docs/architecture.md), [`docs/normalization-rules.md`](docs/normalization-rules.md)                                             |
-| Portable schemas     | JSON manifests and normalization-result envelopes are versioned Draft 2020-12 contracts.                         | [`schemas/bridge-definition.v1.json`](schemas/bridge-definition.v1.json), [`schemas/normalization-result.v1.json`](schemas/normalization-result.v1.json) |
-| Fail-before-dispatch | Invalid canonical input fails before provider payload creation.                                                  | `client/typescript/test/bridge.test.ts`                                                                                                                  |
-| Fixture discipline   | Valid, defaulted, invalid, and provider-mapping fixtures define the public behavior that CI smokes.              | [`examples/fixtures/`](examples/fixtures)                                                                                                                |
-| Runtime scope        | Auth, persistence, billing, queues, provider SDK calls, webhooks, telemetry, and routing stay application-owned. | [`AGENTS.md`](AGENTS.md), [`SECURITY.md`](SECURITY.md)                                                                                                   |
-| Code guard           | Sentry is repository wiring only, with no runtime SDK, DSN, tracing, or telemetry.                               | `.github/workflows/sentry-check.yml`, `scripts/sentry-project-check.mjs`                                                                                 |
+| Area | Production rule | Evidence |
+| :--- | :-------------- | :------- |
+| Public contract | Public fields use lowercase snake-case `request_*` names and reject unknown fields by default. | `client/typescript/src/index.ts`, [`schemas/bridge-definition.v1.json`](schemas/bridge-definition.v1.json) |
+| Adapter boundary | Provider-native fields stay inside `mapCore`, `mapOptions`, or documented `mapStructured` exceptions. | [`docs/architecture.md`](docs/architecture.md), [`docs/normalization-rules.md`](docs/normalization-rules.md) |
+| Portable schemas | JSON manifests and normalization-result envelopes are versioned Draft 2020-12 contracts. | [`schemas/bridge-definition.v1.json`](schemas/bridge-definition.v1.json), [`schemas/normalization-result.v1.json`](schemas/normalization-result.v1.json) |
+| Fail-before-dispatch | Invalid canonical input fails before provider payload creation. | `client/typescript/test/bridge.test.ts` |
+| Fixture discipline | Valid, defaulted, invalid, and provider-mapping fixtures define the public behavior that CI smokes. | [`examples/fixtures/`](examples/fixtures) |
+| Runtime scope | Auth, persistence, billing, queues, provider SDK calls, webhooks, telemetry, and routing stay application-owned. | [`AGENTS.md`](AGENTS.md), [`SECURITY.md`](SECURITY.md) |
+| Code guard | Sentry is repository wiring only, with no runtime SDK, DSN, tracing, or telemetry. | `.github/workflows/sentry-check.yml`, `scripts/sentry-project-check.mjs` |
 
 ### Configuration surface
 
-| Setting or input                                    | Required for                | Notes                                                                                                                   |
-| :-------------------------------------------------- | :-------------------------- | :---------------------------------------------------------------------------------------------------------------------- |
-| Bridge definition                                   | Runtime normalization       | Use TypeScript definitions for executable adapters and JSON manifests for portable validation/schema checks.            |
-| `schemaVersion` / `schema_version`                  | Contract versioning         | Use `bridge-definition.v1`; add v2 instead of breaking v1.                                                              |
-| `modelId` / `model_id`                              | Contract identity           | Public model identifier for docs, fixtures, and normalization envelopes.                                                |
-| `supportedProviders` / `supported_providers`        | Provider validation         | Keep placeholder IDs in OSS examples and concrete private IDs in application code when needed.                          |
-| `providerOrder` / `provider_order`                  | Default dispatch order      | The `fastest` sentinel expands to configured provider order in this package; private routing remains application-owned. |
-| `fields.core` / `core_fields`                       | Product-level request shape | Keep pricing-sensitive dimensions such as duration, resolution, audio, and input assets here.                           |
-| `fields.options` / `option_fields`                  | Public tuning knobs         | Use for seed, moderation, prompt enhancement, negative prompt, and similar non-core knobs.                              |
-| `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, `SENTRY_PROJECT` | Repository code guard       | Used by the scheduled Sentry Project Check workflow only.                                                               |
+| Setting or input | Required for | Notes |
+| :--------------- | :----------- | :---- |
+| Bridge definition | Runtime normalization | Use TypeScript definitions for executable adapters and JSON manifests for portable validation/schema checks. |
+| `schemaVersion` / `schema_version` | Contract versioning | Use `bridge-definition.v1`; add v2 instead of breaking v1. |
+| `modelId` / `model_id` | Contract identity | Public model identifier for docs, fixtures, and normalization envelopes. |
+| `supportedProviders` / `supported_providers` | Provider validation | Keep placeholder IDs in OSS examples and concrete private IDs in application code when needed. |
+| `providerOrder` / `provider_order` | Default dispatch order | The `fastest` sentinel expands to configured provider order in this package; private routing remains application-owned. |
+| `fields.core` / `core_fields` | Product-level request shape | Keep pricing-sensitive dimensions such as duration, resolution, audio, and input assets here. |
+| `fields.options` / `option_fields` | Public tuning knobs | Use for seed, moderation, prompt enhancement, negative prompt, and similar non-core knobs. |
+| `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, `SENTRY_PROJECT` | Repository code guard | Used by the scheduled Sentry Project Check workflow only. |
 
 ### Production deployment
 
@@ -448,14 +443,14 @@ For the full schema discipline, see [`docs/normalization-rules.md`](docs/normali
 
 ### Release gates
 
-| Gate               | Command or workflow                                                                        | What it proves                                                                                                                            |
-| :----------------- | :----------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------- |
-| TypeScript quality | `cd client/typescript && npm ci && npm run lint && npm run test:coverage && npm run build` | SDK types, unit tests, lcov coverage, and package build are clean.                                                                        |
-| Package workflow   | `.github/workflows/publish-check.yml`                                                      | TypeScript lint/coverage/build, Codecov upload when credentials are available, CLI validate/schema/map smoke paths, and npm pack dry-run. |
-| Fixture smoke      | `node dist/cli.mjs validate ...`, `schema ...`, `map ... --provider provider_b`            | Portable manifests validate, schema generation works, and executable adapters map fixture payloads.                                       |
-| Schema parity      | `client/typescript/test/bridge.test.ts`                                                    | Runtime field-name and HTTP(S) URL rules stay aligned with versioned schemas.                                                             |
-| CodeQL             | `.github/workflows/codeql.yml`                                                             | JavaScript/TypeScript static security analysis runs for the standalone repo.                                                              |
-| Sentry guard       | `.github/workflows/sentry-check.yml`                                                       | Repository-specific Sentry project wiring is active without adding runtime telemetry.                                                     |
+| Gate | Command or workflow | What it proves |
+| :--- | :------------------ | :------------- |
+| TypeScript quality | `cd client/typescript && npm ci && npm run lint && npm run test:coverage && npm run build` | SDK types, unit tests, lcov coverage, and package build are clean. |
+| Package workflow | `.github/workflows/publish-check.yml` | TypeScript lint/coverage/build, Codecov upload when credentials are available, CLI validate/schema/map smoke paths, and npm pack dry-run. |
+| Fixture smoke | `node dist/cli.mjs validate ...`, `schema ...`, `map ... --provider provider_b` | Portable manifests validate, schema generation works, and executable adapters map fixture payloads. |
+| Schema parity | `client/typescript/test/bridge.test.ts` | Runtime field-name and HTTP(S) URL rules stay aligned with versioned schemas. |
+| CodeQL | `.github/workflows/codeql.yml` | JavaScript/TypeScript static security analysis runs for the standalone repo. |
+| Sentry guard | `.github/workflows/sentry-check.yml` | Repository-specific Sentry project wiring is active without adding runtime telemetry. |
 
 ### Production checklist
 
@@ -493,24 +488,24 @@ Track the bridge at the application boundary:
 
 `rosetta-bridge` ships no provider credentials and no runtime secret storage. Rotate secrets in the host application:
 
-| Secret                    | Rotation guidance                                                                                                  |
-| :------------------------ | :----------------------------------------------------------------------------------------------------------------- |
-| Provider API keys         | Rotate in backend secret storage and confirm adapters do not accept keys through `request_*` fields.               |
-| Webhook signing secrets   | Rotate in the host route or provider console; bridge manifests should not contain callback secrets.                |
+| Secret | Rotation guidance |
+| :----- | :---------------- |
+| Provider API keys | Rotate in backend secret storage and confirm adapters do not accept keys through `request_*` fields. |
+| Webhook signing secrets | Rotate in the host route or provider console; bridge manifests should not contain callback secrets. |
 | Package publishing tokens | Rotate in the standalone package publishing environment when used. The current workflow performs pack checks only. |
-| Sentry code-guard token   | Rotate repository secrets and rerun the Sentry Project Check workflow.                                             |
+| Sentry code-guard token | Rotate repository secrets and rerun the Sentry Project Check workflow. |
 
 ### Troubleshooting
 
-| Symptom                                                | Likely cause                                                                                                    | Action                                                                                                                                            |
-| :----------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `ValidationError` with `unknown_field`                 | Caller sent undeclared input or provider-native names leaked into public API.                                   | Add a public `request_*` field deliberately or remove the leaked field from the request.                                                          |
-| `unsupported_value` for provider order                 | `request_provider_order` includes an unknown provider or duplicate/invalid order.                               | Keep values to `fastest` or comma-separated supported provider IDs declared in the bridge.                                                        |
-| URL validation fails                                   | URL field is not `http://` or `https://`, or a URL array contains a non-string item.                            | Normalize asset URLs in the host app before calling the bridge.                                                                                   |
-| Provider payload is missing a field                    | Mapper returned top-level `undefined`, which the bridge strips intentionally.                                   | Return `null`, `false`, `0`, an empty string, or an empty array when that value must be preserved.                                                |
+| Symptom | Likely cause | Action |
+| :------ | :----------- | :----- |
+| `ValidationError` with `unknown_field` | Caller sent undeclared input or provider-native names leaked into public API. | Add a public `request_*` field deliberately or remove the leaked field from the request. |
+| `unsupported_value` for provider order | `request_provider_order` includes an unknown provider or duplicate/invalid order. | Keep values to `fastest` or comma-separated supported provider IDs declared in the bridge. |
+| URL validation fails | URL field is not `http://` or `https://`, or a URL array contains a non-string item. | Normalize asset URLs in the host app before calling the bridge. |
+| Provider payload is missing a field | Mapper returned top-level `undefined`, which the bridge strips intentionally. | Return `null`, `false`, `0`, an empty string, or an empty array when that value must be preserved. |
 | Replayed canonical input fails on `null` option fields | `toCanonicalInput()` and `convert()` include omitted option fields as `null` by default for complete envelopes. | Persist `toCanonicalInput(input, { includeNullOptionFields: false })` for replay, or strip null-only omitted option fields before re-normalizing. |
-| JSON manifest cannot map payloads                      | Portable JSON cannot serialize adapter functions.                                                               | Use an executable `.mjs` or `.cjs` bridge module for CLI `map`.                                                                                   |
-| Fixture payload changed unexpectedly                   | Adapter behavior changed or provider-native expectations drifted.                                               | Review provider docs, update expected fixtures deliberately, and document the adapter change.                                                     |
+| JSON manifest cannot map payloads | Portable JSON cannot serialize adapter functions. | Use an executable `.mjs` or `.cjs` bridge module for CLI `map`. |
+| Fixture payload changed unexpectedly | Adapter behavior changed or provider-native expectations drifted. | Review provider docs, update expected fixtures deliberately, and document the adapter change. |
 
 ## 9. Version surface
 
@@ -532,7 +527,7 @@ Future provider clients, hosted routes, billing, queues, telemetry, and routing 
 
 - **[BabySea](https://babysea.ai)**: the execution control plane for generative media. BabySea's production schema pipeline is the source pattern behind this public TypeScript + JSON Schema normalization boundary.
 
-_Using `rosetta-bridge`? Open a PR to add yourself._
+*Using `rosetta-bridge`? Open a PR to add yourself.*
 
 ### Related projects
 
