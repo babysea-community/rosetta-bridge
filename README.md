@@ -1,26 +1,18 @@
 <div align="center">
 
-<p>
-  <img src="public/icon.png" width="120" alt="Rosetta Bridge icon" />
-</p>
+<img src="public/icon.png" width="120" alt="Rosetta Bridge icon" />
 
-<h1>
-  Rosetta Bridge
-</h1>
+# Rosetta Bridge
 
-<p>
-  Request normalization engine for multi-provider inference workloads. Built with JSON Schema and TypeScript adapters.
-</p>
+Request normalization engine for multi-provider inference workloads.
 
-<p>
-  <strong>One public request • Many provider dialects • No silent schema drift</strong>
-</p>
+### One request • Many dialects • No silent schema
 
 <br />
 
 <strong>Project details</strong>
 
-[![BabySea Blog](https://custom-icon-badges.demolab.com/badge/babysea-blog-0D9488?style=for-the-badge&logo=babysea&logoColor=white)](https://babysea.ai/blog/how-babysea-built-strict-request-normalization-with-json-schema-and-typescript)
+[![BabySea Blog](https://custom-icon-badges.demolab.com/badge/read-blog-0D9488?style=for-the-badge&logo=babysea&logoColor=white)](https://babysea.ai/blog/how-babysea-built-strict-request-normalization-with-json-schema-and-typescript)
 [![BabySea OSS Primitive](https://custom-icon-badges.demolab.com/badge/oss-primitive-EA580c?style=for-the-badge&logo=babysea&logoColor=white)](#babysea-oss-taxonomy)
 [![BabySea OSS Status Production](https://custom-icon-badges.demolab.com/badge/oss_status-production-C026D3?style=for-the-badge&logo=babysea&logoColor=white)](#status)
 [![License](https://custom-icon-badges.demolab.com/badge/license-apache_2.0-059669?style=for-the-badge&logo=apache&logoColor=white)](LICENSE)
@@ -42,7 +34,7 @@
 
 [![JSON Schema](https://img.shields.io/badge/json_schema-000000?style=for-the-badge&logo=json&logoColor=white)](https://json-schema.org)
 [![TypeScript](https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
-[![Provider Adapters](https://img.shields.io/badge/runtime-provider_adapters-4E56A6?style=for-the-badge)](#5-architecture)
+[![Provider Adapters](https://custom-icon-badges.demolab.com/badge/provider_adapters-4E56A6?style=for-the-badge&logo=plug&logoColor=white)](#5-architecture)
 
 <br/>
 
