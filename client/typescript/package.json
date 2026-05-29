@@ -1,7 +1,7 @@
 {
   "name": "rosetta-bridge",
   "version": "0.2.4",
-  "description": "Request normalization engine for multi-provider inference workloads. Built with JSON Schema and TypeScript adapters.",
+  "description": "Request normalization engine for multi-provider inference workloads.",
   "license": "Apache-2.0",
   "author": "BabySea, Inc. <dev@babysea.ai>",
   "homepage": "https://babysea.ai/blog/how-babysea-built-strict-request-normalization-with-json-schema-and-typescript",
