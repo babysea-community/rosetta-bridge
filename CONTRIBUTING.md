@@ -1,88 +1,108 @@
 # Contributing
 
-Thanks for improving Rosetta Bridge.
+Thanks for improving this project.
 
-Rosetta Bridge is a TypeScript request-normalization primitive for keeping public `request_*` inputs separate from provider-native payloads. Good contributions preserve strict validation, public-neutral examples, and host-owned provider execution.
+This repository is part of the BabySea OSS family. It may be an SDK, primitive, starter, documentation site, or another standalone project. Good contributions keep the public contract clear, the first-run path reliable, security boundaries explicit, and secrets out of public surfaces.
 
-## Contribution guidelines
+## Project direction
 
-- Keep all contributions under Apache 2.0. By submitting a PR you agree to license it under Apache 2.0.
-- Preserve v1 schemas. If a change requires breaking `schemas/bridge-definition.v1.json` or `schemas/normalization-result.v1.json`, publish a v2 alongside it.
-- Validate canonical input before dispatch. Provider payloads must never be emitted from invalid public input.
-- Keep boundary discipline. Core fields belong in `mapCore`; option fields belong in `mapOptions`; nested payload exceptions must use `mapStructured` and be documented.
-- Keep the public surface neutral: placeholder provider IDs, lowercase snake-case `request_*` examples, and no private provider settings.
-- Keep auth, billing, persistence, queues, provider SDK calls, webhooks, telemetry, and routing services application-owned.
-- Prefer focused changes. Avoid unrelated refactors in runtime validation, fixture shape, schemas, or CLI docs.
+Use [README.md](README.md) as the source of truth for this project's purpose, supported workflows, runtime boundaries, and validation steps. If this project includes [AGENTS.md](AGENTS.md), follow it for repository-specific development guidance.
 
-## Documentation standard
-
-Rosetta Bridge docs are part of the public contract for this primitive. Keep them factual, operator-ready, and tied to behavior that exists in this repository.
-
-- Start from the README contract: what the primitive is, what it is not, how to deploy it, how to validate it, and how to recover it.
-- Use exact schema names, command names, fixture paths, public field names, provider placeholders, and file paths.
-- Keep the public surface to TypeScript adapters and JSON Schema contracts. Auth, billing, persistence, queues, provider SDK calls, webhooks, telemetry, and routing services stay application-owned.
-- Use lowercase snake-case `request_*` examples and placeholder provider IDs in OSS docs.
-- Do not document private provider IDs, credentials, production field names, internal file names, route handlers, or customer payloads.
-- Update `CHANGELOG.md` for user-visible docs, configuration, security, SDK behavior, schema, fixture, or CLI changes.
-- Avoid roadmap language in the public contract. New features stay out of README claims until implemented, documented, and validated for this stack.
-
-When a change touches these areas, update the matching docs before opening a PR:
-
-| Change area                    | Required docs to review                                      |
-| :----------------------------- | :----------------------------------------------------------- |
-| Runtime validation             | README validation flow, TypeScript tests, fixture contracts  |
-| Public request field semantics | README examples, schemas, normalization rules, fixtures      |
-| Provider mapping behavior      | README adapter examples, executable fixtures, expected output |
-| CLI behavior                   | README CLI section, fixture docs, package README             |
-| Security or trust boundary     | README production readiness, SECURITY.md, normalization docs |
-| Sentry or CI workflows         | README release gates, SECURITY.md, this guide                |
-| Schema or envelope shape       | JSON Schemas, README contracts, changelog                    |
+Prefer changes that make this project easier to adopt, operate, secure, test, and maintain. Avoid adding features that do not match the documented scope in [README.md](README.md).
 
 ## Development flow
 
-The published SDK targets Node.js 22+ at runtime. Local TypeScript SDK development uses the Vitest/Vite toolchain and requires Node.js 22.12+.
+1. Install dependencies using the package manager and commands documented in [README.md](README.md) or the project manifest.
 
-```bash
-git clone https://github.com/babysea-community/rosetta-bridge
-cd rosetta-bridge/client/typescript
-npm install
-npm run lint
-npm run test:coverage
-npm run build
-```
+   ```bash
+   pnpm install --frozen-lockfile
+   ```
 
-Run CLI smoke checks when adapter, fixture, or schema behavior changes:
+2. If this project includes an environment template, copy it before running local services.
 
-```bash
-node dist/cli.mjs validate ../../examples/fixtures/bridge-definition.valid.json ../../examples/fixtures/request.valid-minimal.json
-node dist/cli.mjs schema ../../examples/fixtures/bridge-definition.valid.json
-node dist/cli.mjs map ../../examples/fixtures/bridge-definition.executable.mjs ../../examples/fixtures/request.valid-provider-mapping.json --provider provider_b
-```
+   ```bash
+   cp .env.example .env.local
+   ```
+
+3. Configure only the values required by [README.md](README.md) or `.env.example`. Keep all secrets local.
+
+4. Run the local validation commands documented by this project. Common examples include:
+
+   ```bash
+   pnpm format
+   pnpm lint
+   pnpm typecheck
+   pnpm test
+   pnpm build
+   ```
+
+If this project uses npm, Python, Docker, or another toolchain, use the equivalent commands documented in [README.md](README.md).
 
 ## Before opening a pull request
 
-Run these checks:
+Run every relevant check for the files you changed. If a command is not available in this repository, mention the equivalent validation in the pull request.
+
+Common checks include:
 
 ```bash
-cd client/typescript
-npm run lint
-npm run test:coverage
-npm run build
-npm pack --dry-run
+pnpm format
+pnpm lint
+pnpm typecheck
+pnpm test
+pnpm build
 ```
 
-If you touched schemas or fixtures, validate the examples and expected provider payloads before opening the PR.
+For package projects, also run the package dry-run documented in [README.md](README.md). For infrastructure or deployment changes, include the validation command that proves the configuration still loads.
+
+## Contribution guidelines
+
+- Keep the public repo friendly: no secrets, private project ids, local-only URLs, personal generated media, signed URLs, customer data, or private internal references.
+- Keep changes inside this project's documented scope. If the scope should change, update [README.md](README.md) and explain the reasoning in the pull request.
+- Keep public APIs, schemas, command-line flags, environment variables, deployment behavior, and generated outputs versioned and documented.
+- Add or update tests for user-visible behavior, data contracts, security-sensitive paths, and bug fixes.
+- Keep adapters thin and business logic testable when this project includes runtime code.
+- Validate untrusted input before it reaches storage, network calls, provider SDKs, shell commands, templates, or generated artifacts.
+- Do not log secrets, credentials, tokens, prompts, private media, customer data, or signed URLs.
+- Keep every secret described in `.env.example` server-side unless that template explicitly marks the value as public.
+- Update [README.md](README.md), [CHANGELOG.md](CHANGELOG.md), [SECURITY.md](SECURITY.md), and tests when behavior, configuration, security posture, or operations change.
+
+## Documentation standard
+
+Documentation is part of the release contract. Keep it factual, operator-ready, and tied to behavior that exists in the repository.
+
+- Start from [README.md](README.md): what this project is, what it is not, how to install or deploy it, how to validate it, and how to recover or debug common issues.
+- Use `.env.example` as the source of truth for environment variable names when the project has runtime configuration.
+- Document validation steps beside operational claims.
+- Keep security guidance concrete: where secrets live, which values are browser-visible, how to rotate keys, and what should never be posted publicly.
+- Update [CHANGELOG.md](CHANGELOG.md) for user-visible docs, configuration, security, operations, API, schema, or packaging changes.
+- Avoid roadmap language in the public contract. New features stay out of README claims until implemented, documented, and validated.
+
+When a change touches these areas, review the matching docs before opening a pull request:
+
+| Change area                                        | Required docs to review                                 |
+| :------------------------------------------------- | :------------------------------------------------------ |
+| Public API, SDK exports, schemas, or CLI flags     | README, CHANGELOG.md, tests                             |
+| Required or optional environment values            | README, `.env.example`, SECURITY.md                     |
+| Authentication, authorization, webhooks, or keys   | README, SECURITY.md, tests                              |
+| Provider, network, storage, queue, or database use | README, SECURITY.md, deployment docs, tests             |
+| Packaging, CI, release, or deployment behavior     | README, CHANGELOG.md, LICENSES.md, workflow files       |
+| Documentation-only changes                         | README, CHANGELOG.md, CODE_OF_CONDUCT.md where relevant |
 
 ## Issue triage
 
 - `bug` - reproducible defect, with logs, a failing test, or a minimal reproduction.
 - `proposal` - scoped design idea with the user problem, implementation sketch, and validation path.
 - `good first issue` - small, well-scoped change that can be validated without production credentials.
+- `security` - do not open public issues for vulnerabilities; follow [SECURITY.md](SECURITY.md).
 
 ## Conduct
 
-See [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md). Be respectful, assume good faith, and keep discussion focused on the work and the people using it.
+See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md). Be respectful, assume good faith, and keep discussion focused on the work and the people using it.
 
 ## Security-sensitive changes
 
-Open security fixes privately through the process in [`SECURITY.md`](SECURITY.md). Do not include private provider credentials, customer prompts, signed asset URLs, production provider payloads, internal provider IDs, route handlers, unreleased vulnerability details, or live production data in public issues, pull requests, test fixtures, logs, or screenshots.
+Open security fixes privately through the process in [SECURITY.md](SECURITY.md). Do not include secrets, deployment details, unreleased vulnerability details, private prompts, reference media, generated media, customer data, or signed URLs in public issues, pull requests, test fixtures, logs, or screenshots.
+
+## License compliance
+
+Review [LICENSES.md](LICENSES.md) before adding dependencies or redistributed content. Dependency license changes should be called out in the pull request and reflected in [CHANGELOG.md](CHANGELOG.md) when they affect users.

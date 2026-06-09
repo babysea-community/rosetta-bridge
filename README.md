@@ -1,12 +1,12 @@
 <div align="center">
 
-<img src="public/icon.png" width="120" alt="Rosetta Bridge icon" />
+<img src="public/icon.png" width="100" alt="Rosetta Bridge icon" />
 
 # Rosetta Bridge
 
 Request normalization engine for multi-provider inference workloads.
 
-### One request • Many dialects • No silent schema
+### One request. Many dialects. No silent schema.
 
 <br />
 
@@ -26,7 +26,7 @@ Request normalization engine for multi-provider inference workloads.
 [![Codecov](https://img.shields.io/codecov/c/github/babysea-community/rosetta-bridge?style=for-the-badge&label=codecov&logo=codecov&logoColor=white&color=FF0077&token=R8UcQFs7mx)](https://codecov.io/github/babysea-community/rosetta-bridge)
 [![Sentry](https://img.shields.io/github/actions/workflow/status/babysea-community/rosetta-bridge/sentry-check.yml?style=for-the-badge&label=sentry&logo=sentry&logoColor=white&color=181225)](https://github.com/babysea-community/rosetta-bridge/actions/workflows/sentry-check.yml)
 [![CodeQL](https://img.shields.io/github/actions/workflow/status/babysea-community/rosetta-bridge/codeql.yml?style=for-the-badge&label=codeql&logo=github&logoColor=white)](https://github.com/babysea-community/rosetta-bridge/actions/workflows/codeql.yml)
-[![Package](https://img.shields.io/github/actions/workflow/status/babysea-community/rosetta-bridge/publish-check.yml?style=for-the-badge&label=package&logo=npm&logoColor=white)](https://github.com/babysea-community/rosetta-bridge/actions/workflows/publish-check.yml)
+[![Package](https://img.shields.io/github/actions/workflow/status/babysea-community/rosetta-bridge/package-check.yml?style=for-the-badge&label=package&logo=npm&logoColor=white)](https://github.com/babysea-community/rosetta-bridge/actions/workflows/package-check.yml)
 
 <br/>
 
@@ -426,7 +426,7 @@ For the full schema discipline, see [`docs/normalization-rules.md`](docs/normali
 | Gate | Command or workflow | What it proves |
 | :--- | :------------------ | :------------- |
 | TypeScript quality | `cd client/typescript && npm ci && npm run lint && npm run test:coverage && npm run build` | SDK types, unit tests, lcov coverage, and package build are clean. |
-| Package workflow | `.github/workflows/publish-check.yml` | TypeScript lint/coverage/build, Codecov upload when credentials are available, CLI validate/schema/map smoke paths, and npm pack dry-run. |
+| Package workflow | `.github/workflows/package-check.yml` | TypeScript lint/coverage/build, Codecov upload when credentials are available, CLI validate/schema/map smoke paths, and npm pack dry-run. |
 | Fixture smoke | `node dist/cli.mjs validate ...`, `schema ...`, `map ... --provider provider_b` | Portable manifests validate, schema generation works, and executable adapters map fixture payloads. |
 | Schema parity | `client/typescript/test/bridge.test.ts` | Runtime field-name and HTTP(S) URL rules stay aligned with versioned schemas. |
 | CodeQL | `.github/workflows/codeql.yml` | JavaScript/TypeScript static security analysis runs for the standalone repo. |
@@ -533,4 +533,4 @@ We welcome PRs, issues, and design discussion. See [`CONTRIBUTING.md`](CONTRIBUT
 
 ## 12. License
 
-[Apache License 2.0](LICENSE). Use it, fork it, ship it. Just keep the notice.
+[Apache License 2.0](LICENSE). Use it, fork it, ship it.
