@@ -2,7 +2,7 @@
 
 All notable changes will be documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## [Unreleased]
 
 ### Added
 
@@ -39,7 +39,6 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 ### Fixed
 
 - Declared Node.js ambient types for CLI and test type-checking so TypeScript 6 dependency update checks can resolve `node:` imports.
-- Replaced Sentry URL trailing-slash regex normalization with a bounded string scan to avoid CodeQL ReDoS noise.
 
 ## [0.2.1] - 2026-05-23
 
@@ -56,12 +55,6 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## [0.1.9] - 2026-05-22
 
-### Added
-
-- Added a CircleCI package-check workflow for rosetta-bridge TypeScript lint/coverage/build/package validation, CLI smoke checks, and trusted `main` Codecov CLI upload when `CODECOV_TOKEN` is configured in CircleCI.
-- Added a Snyk Security workflow for Snyk Code SARIF upload, Open Source scanning and monitoring, and IaC reporting with `SNYK_TOKEN`.
-- Added a Shields.io CircleCI README badge that matches the project badge style.
-
 ### Changed
 
 - Replaced the static Snyk README badge with a realtime Snyk Security workflow status badge.
@@ -70,7 +63,7 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ### Added
 
-- Added repository `codecov.yml` with GitHub Actions and CircleCI provider recognition, CI-gated Codecov status, pull request comment configuration, and TypeScript client path fixes.
+- Added repository `codecov.yml` with GitHub Actions provider recognition, CI-gated Codecov status, pull request comment configuration, and TypeScript client path fixes.
 
 ### Changed
 
@@ -87,11 +80,7 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 ### Changed
 
 - Standardized contributing and code-of-conduct guidance with the shared BabySea OSS documentation standard.
-- Upgraded Package Check, Sentry Project Check, and CodeQL workflows to Node 24-compatible GitHub Action majors, including Codecov upload via `codecov/codecov-action@v6`.
-
-### Fixed
-
-- Made the Sentry project check skip cleanly when all Sentry repository secrets are absent, fail partial secret configuration, and treat permission-limited Sentry API responses as advisory when explicitly enabled by CI.
+- Upgraded Package Check and CodeQL workflows to Node 24-compatible GitHub Action majors, including Codecov upload via `codecov/codecov-action@v7`.
 
 ## [0.1.5] - 2026-05-22
 
@@ -124,10 +113,6 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## [0.1.1] - 2026-05-17
 
-### Security
-
-- Hardened `scripts/sentry-project-check.mjs` with normalized config parsing, HTTPS-only Sentry URL validation except localhost, bounded retry handling, strict Sentry API response-shape checks, stronger secret redaction, and stackless failure output. No runtime Sentry SDK, DSN, or telemetry is added.
-
 ### Changed
 
 - Bumped the TypeScript package from `0.1.0` to `0.1.1`.
@@ -147,8 +132,6 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 - Added an explicit README status note explaining that this is a production-grade v0.x OSS primitive with validated behavior and evolving pre-1.0 public contracts.
 - Added the upcoming `execution-arrow` primitive to the shared README architecture map with its temporary `/#` launch link and `/v1/generate/image` + `/v1/generate/video` scope.
 - Added README workflow badges for the standalone CodeQL and Package Check workflows.
-- Added Sentry code-guard wording to `SECURITY.md` for the public `babysea-community/rosetta-bridge` OSS repository.
-- Added `scripts/sentry-project-check.mjs`, a README badge, ignored local `.sentryclirc` support, and a scheduled `Sentry Project Check` workflow. The workflow reads Sentry org/project configuration from GitHub Actions secrets, verifies the configured project slug, active status, `other` platform, ownership, and Code Guard rules, and does not add runtime tracking.
 - Added production-derived schema-discipline documentation that maps BabySea's real `_SCHEMA_RULES.md`, `createModelConverter(...)`, `RAW_SCHEMA`, `specificSchema`, `toProviderInput`, prompt-enhancement converters, moderation converters, provider-order sentinel, pricing-sensitive core fields, URL handling, and complete canonical envelopes into public JSON + TypeScript terms.
 - Added TypeScript definition-validation coverage for unsupported field spec types, malformed enum values, duplicate enum values, invalid integer bounds, lowercase snake-case `request_*` naming, and JSON Schema parity for HTTP(S)-only URL arrays and unique enum values.
 - Initial public scaffold for `rosetta-bridge` as BabySea's third OSS primitive.

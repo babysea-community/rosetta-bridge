@@ -14,7 +14,7 @@ Request normalization engine for multi-provider inference workloads.
 
 [![BabySea Blog](https://custom-icon-badges.demolab.com/badge/read-blog-0D9488?style=for-the-badge&logo=babysea&logoColor=white)](https://babysea.ai/blog/how-babysea-built-strict-request-normalization-with-json-schema-and-typescript)
 [![BabySea OSS Primitive](https://custom-icon-badges.demolab.com/badge/oss-primitive-EA580c?style=for-the-badge&logo=babysea&logoColor=white)](#babysea-oss-taxonomy)
-[![BabySea OSS Status Production](https://custom-icon-badges.demolab.com/badge/oss_status-production-C026D3?style=for-the-badge&logo=babysea&logoColor=white)](#status)
+[![BabySea OSS Status Production](https://custom-icon-badges.demolab.com/badge/status-production-C026D3?style=for-the-badge&logo=babysea&logoColor=white)](#status)
 [![License](https://custom-icon-badges.demolab.com/badge/license-apache_2.0-059669?style=for-the-badge&logo=apache&logoColor=white)](LICENSE)
 
 <br/>
@@ -22,9 +22,7 @@ Request normalization engine for multi-provider inference workloads.
 <strong>Checks</strong>
 
 [![GitLabCI](https://img.shields.io/gitlab/pipeline-status/babysea/rosetta-bridge?branch=main&style=for-the-badge&label=gitlabci&logo=gitlab&logoColor=white&color=FC6D26)](https://gitlab.com/babysea/rosetta-bridge/-/commits/main)
-[![CircleCI](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fcircleci.com%2Fapi%2Fv1.1%2Fproject%2Fcircleci%2F2uTLcwc4naeNuKDP41es88%2FEGomeQrEcDBm1vy8xuMFbV%2Ftree%2Fmain%3Flimit%3D1&query=%24%5B0%5D.status&style=for-the-badge&logo=circleci&logoColor=white&label=circleci&color=003740)](https://dl.circleci.com/status-badge/redirect/circleci/2uTLcwc4naeNuKDP41es88/EGomeQrEcDBm1vy8xuMFbV/tree/main)
 [![Codecov](https://img.shields.io/codecov/c/github/babysea-community/rosetta-bridge?style=for-the-badge&label=codecov&logo=codecov&logoColor=white&color=FF0077&token=R8UcQFs7mx)](https://codecov.io/github/babysea-community/rosetta-bridge)
-[![Sentry](https://img.shields.io/github/actions/workflow/status/babysea-community/rosetta-bridge/sentry-check.yml?style=for-the-badge&label=sentry&logo=sentry&logoColor=white&color=181225)](https://github.com/babysea-community/rosetta-bridge/actions/workflows/sentry-check.yml)
 [![CodeQL](https://img.shields.io/github/actions/workflow/status/babysea-community/rosetta-bridge/codeql.yml?style=for-the-badge&label=codeql&logo=github&logoColor=white)](https://github.com/babysea-community/rosetta-bridge/actions/workflows/codeql.yml)
 [![Package](https://img.shields.io/github/actions/workflow/status/babysea-community/rosetta-bridge/package-check.yml?style=for-the-badge&label=package&logo=npm&logoColor=white)](https://github.com/babysea-community/rosetta-bridge/actions/workflows/package-check.yml)
 
@@ -62,9 +60,9 @@ BabySea open source projects are organized into three categories:
 
 BabySea OSS projects are published into three status levels:
 
-[![BabySea OSS Status Working](https://custom-icon-badges.demolab.com/badge/oss_status-working-DB2777?style=for-the-badge&logo=babysea&logoColor=white)](#status)
-[![BabySea OSS Status Production](https://custom-icon-badges.demolab.com/badge/oss_status-production-C026D3?style=for-the-badge&logo=babysea&logoColor=white)](#status)
-[![BabySea OSS Status Alpha](https://custom-icon-badges.demolab.com/badge/oss_status-alpha-D97706?style=for-the-badge&logo=babysea&logoColor=white)](#status)
+[![BabySea OSS Status Working](https://custom-icon-badges.demolab.com/badge/status-working-DB2777?style=for-the-badge&logo=babysea&logoColor=white)](#status)
+[![BabySea OSS Status Production](https://custom-icon-badges.demolab.com/badge/status-production-C026D3?style=for-the-badge&logo=babysea&logoColor=white)](#status)
+[![BabySea OSS Status Alpha](https://custom-icon-badges.demolab.com/badge/status-alpha-D97706?style=for-the-badge&logo=babysea&logoColor=white)](#status)
 
 | Status         | Description                                                                                                                                                                          |
 | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -98,23 +96,13 @@ See [`CHANGELOG.md`](CHANGELOG.md) to track releases and public contract changes
     - [Production-derived schema discipline](#production-derived-schema-discipline)
     - [Pricing-sensitive core fields](#pricing-sensitive-core-fields)
     - [Fail-before-dispatch by design](#fail-before-dispatch-by-design)
-8. [Production readiness](#8-production-readiness)
-    - [Enterprise posture](#enterprise-posture)
-    - [Configuration surface](#configuration-surface)
-    - [Production deployment](#production-deployment)
-    - [Release gates](#release-gates)
-    - [Production checklist](#production-checklist)
-    - [Monitoring](#monitoring)
-    - [Backup and disaster recovery](#backup-and-disaster-recovery)
-    - [Secret rotation](#secret-rotation)
-    - [Troubleshooting](#troubleshooting)
-9. [Version surface](#9-version-surface)
-10. [Security and Compliance](#10-security-and-compliance)
-11. [Community](#11-community)
+8. [Version surface](#9-version-surface)
+9. [Security and Compliance](#10-security-and-compliance)
+10. [Community](#11-community)
     - [Who's using it](#whos-using-it)
     - [Related projects](#related-projects)
     - [Contributing](#contributing)
-12. [License](#12-license)
+11. [License](#12-license)
 
 ---
 
@@ -379,115 +367,7 @@ Adapters may rename or type-convert those values, but the host application can i
 
 Run the bridge before enqueueing or dispatch so downstream systems consume only validated canonical requests.
 
-## 8. Production readiness
-
-Treat `rosetta-bridge` as a schema boundary, not a provider gateway. Production readiness means the public request contract is strict, fixture-backed, versioned, and safe to use before application-owned dispatch, billing, queues, provider clients, or persistence run in your application.
-
-For the full schema discipline, see [`docs/normalization-rules.md`](docs/normalization-rules.md).
-
-### Enterprise posture
-
-| Area | Production rule | Evidence |
-| :--- | :-------------- | :------- |
-| Public contract | Public fields use lowercase snake-case `request_*` names and reject unknown fields by default. | `client/typescript/src/index.ts`, [`schemas/bridge-definition.v1.json`](schemas/bridge-definition.v1.json) |
-| Adapter boundary | Provider-native fields stay inside `mapCore`, `mapOptions`, or documented `mapStructured` exceptions. | [`docs/architecture.md`](docs/architecture.md), [`docs/normalization-rules.md`](docs/normalization-rules.md) |
-| Portable schemas | JSON manifests and normalization-result envelopes are versioned Draft 2020-12 contracts. | [`schemas/bridge-definition.v1.json`](schemas/bridge-definition.v1.json), [`schemas/normalization-result.v1.json`](schemas/normalization-result.v1.json) |
-| Fail-before-dispatch | Invalid canonical input fails before provider payload creation. | `client/typescript/test/bridge.test.ts` |
-| Fixture discipline | Valid, defaulted, invalid, and provider-mapping fixtures define the public behavior that CI smokes. | [`examples/fixtures/`](examples/fixtures) |
-| Runtime scope | Auth, persistence, billing, queues, provider SDK calls, webhooks, telemetry, and routing stay application-owned. | [`AGENTS.md`](AGENTS.md), [`SECURITY.md`](SECURITY.md) |
-| Code guard | Sentry is repository wiring only, with no runtime SDK, DSN, tracing, or telemetry. | `.github/workflows/sentry-check.yml`, `scripts/sentry-project-check.mjs` |
-
-### Configuration surface
-
-| Setting or input | Required for | Notes |
-| :--------------- | :----------- | :---- |
-| Bridge definition | Runtime normalization | Use TypeScript definitions for executable adapters and JSON manifests for portable validation/schema checks. |
-| `schemaVersion` / `schema_version` | Contract versioning | Use `bridge-definition.v1`; add v2 instead of breaking v1. |
-| `modelId` / `model_id` | Contract identity | Public model identifier for docs, fixtures, and normalization envelopes. |
-| `supportedProviders` / `supported_providers` | Provider validation | Keep placeholder IDs in OSS examples and concrete private IDs in application code when needed. |
-| `providerOrder` / `provider_order` | Default dispatch order | The `fastest` sentinel expands to configured provider order in this package; private routing remains application-owned. |
-| `fields.core` / `core_fields` | Product-level request shape | Keep pricing-sensitive dimensions such as duration, resolution, audio, and input assets here. |
-| `fields.options` / `option_fields` | Public tuning knobs | Use for seed, moderation, prompt enhancement, negative prompt, and similar non-core knobs. |
-| `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, `SENTRY_PROJECT` | Repository code guard | Used by the scheduled Sentry Project Check workflow only. |
-
-### Production deployment
-
-1. Record provider contracts and exclusions in private integration notes or adapter source comments.
-2. Define the public `request_*` schema from provider intersections, not capability unions.
-3. Keep provider credentials, callback URLs, account IDs, region hints, and route handlers outside bridge manifests and OSS fixtures.
-4. Run `normalize()` or `toCanonicalInput()` after application auth and before persistence, billing, queueing, or dispatch.
-5. Persist `convert(...)` results for debug metadata. For replay back through the bridge, store `toCanonicalInput(input, { includeNullOptionFields: false })` or strip null-only omitted option fields before re-normalizing.
-6. Call `toProviderInput()` or `convert()` only after choosing the provider your backend intends to dispatch.
-7. Add fixture coverage for valid minimal input, defaults, invalid input, and every provider payload mapping you rely on.
-8. Treat executable bridge modules used by the CLI `map` command as trusted code.
-
-### Release gates
-
-| Gate | Command or workflow | What it proves |
-| :--- | :------------------ | :------------- |
-| TypeScript quality | `cd client/typescript && npm ci && npm run lint && npm run test:coverage && npm run build` | SDK types, unit tests, lcov coverage, and package build are clean. |
-| Package workflow | `.github/workflows/package-check.yml` | TypeScript lint/coverage/build, Codecov upload when credentials are available, CLI validate/schema/map smoke paths, and npm pack dry-run. |
-| Fixture smoke | `node dist/cli.mjs validate ...`, `schema ...`, `map ... --provider provider_b` | Portable manifests validate, schema generation works, and executable adapters map fixture payloads. |
-| Schema parity | `client/typescript/test/bridge.test.ts` | Runtime field-name and HTTP(S) URL rules stay aligned with versioned schemas. |
-| CodeQL | `.github/workflows/codeql.yml` | JavaScript/TypeScript static security analysis runs for the standalone repo. |
-| Sentry guard | `.github/workflows/sentry-check.yml` | Repository-specific Sentry project wiring is active without adding runtime telemetry. |
-
-### Production checklist
-
-- [ ] Provider docs and provider-native names are kept outside public request schemas.
-- [ ] All public defaults are declared in field specs.
-- [ ] Aspect ratios, formats, input limits, duration, resolution, audio, and other pricing dimensions come from provider intersections.
-- [ ] `request_provider_order` values contain only `fastest` or supported provider-order strings.
-- [ ] URL fields use `url` or `url-array` and accept only `http://` or `https://` values.
-- [ ] Fixtures cover valid minimal requests, defaulted requests, unknown-field rejection, unsupported enums, invalid URLs, and provider payload mappings.
-- [ ] Canonical request envelopes are persisted only after successful normalization, and replay stores omit null-only optional fields.
-- [ ] Auth, billing, rate limits, queues, provider SDK calls, webhooks, telemetry, and dispatch run outside this package.
-- [ ] Breaking public-contract changes add a new schema version instead of changing v1 in place.
-- [ ] Private provider IDs, credentials, route handlers, customer data, and production payloads stay out of OSS examples.
-
-### Monitoring
-
-Track the bridge at the application boundary:
-
-- `ValidationError` issue counts by `code` and field.
-- Unknown-field attempts and unsupported enum values after public API changes.
-- Provider mapping failures by provider and bridge version.
-- Fixture drift: provider payload diffs that change without an intentional schema or adapter update.
-- CLI smoke failures in CI for `validate`, `schema`, and `map`.
-- Canonical envelope version adoption if your application supports multiple bridge versions.
-
-### Backup and disaster recovery
-
-- Version bridge definitions, adapter source, fixture inputs, expected provider payloads, and generated schemas together.
-- Keep private provider contract notes and credential references in your application repository or secret manager, not in public manifests.
-- When restoring a deployment, replay from stored canonical input only after confirming the adapter version that produced it. If the stored envelope came from `convert(...)`, strip null-only omitted option fields before passing it back to `normalize()` or `toProviderInput()`.
-- Keep old v1 schemas and fixtures available while any client still sends v1 requests.
-- Use fixture smoke tests to validate restored CI or release infrastructure before publishing a package.
-
-### Secret rotation
-
-`rosetta-bridge` ships no provider credentials and no runtime secret storage. Rotate secrets in the host application:
-
-| Secret | Rotation guidance |
-| :----- | :---------------- |
-| Provider API keys | Rotate in backend secret storage and confirm adapters do not accept keys through `request_*` fields. |
-| Webhook signing secrets | Rotate in the host route or provider console; bridge manifests should not contain callback secrets. |
-| Package publishing tokens | Rotate in the standalone package publishing environment when used. The current workflow performs pack checks only. |
-| Sentry code-guard token | Rotate repository secrets and rerun the Sentry Project Check workflow. |
-
-### Troubleshooting
-
-| Symptom | Likely cause | Action |
-| :------ | :----------- | :----- |
-| `ValidationError` with `unknown_field` | Caller sent undeclared input or provider-native names leaked into public API. | Add a public `request_*` field deliberately or remove the leaked field from the request. |
-| `unsupported_value` for provider order | `request_provider_order` includes an unknown provider or duplicate/invalid order. | Keep values to `fastest` or comma-separated supported provider IDs declared in the bridge. |
-| URL validation fails | URL field is not `http://` or `https://`, or a URL array contains a non-string item. | Normalize asset URLs in the host app before calling the bridge. |
-| Provider payload is missing a field | Mapper returned top-level `undefined`, which the bridge strips intentionally. | Return `null`, `false`, `0`, an empty string, or an empty array when that value must be preserved. |
-| Replayed canonical input fails on `null` option fields | `toCanonicalInput()` and `convert()` include omitted option fields as `null` by default for complete envelopes. | Persist `toCanonicalInput(input, { includeNullOptionFields: false })` for replay, or strip null-only omitted option fields before re-normalizing. |
-| JSON manifest cannot map payloads | Portable JSON cannot serialize adapter functions. | Use an executable `.mjs` or `.cjs` bridge module for CLI `map`. |
-| Fixture payload changed unexpectedly | Adapter behavior changed or provider-native expectations drifted. | Review provider docs, update expected fixtures deliberately, and document the adapter change. |
-
-## 9. Version surface
+## 8. Version surface
 
 Current version surface:
 
@@ -501,36 +381,22 @@ Current version surface:
 
 Future provider clients, hosted routes, billing, queues, telemetry, and routing services stay outside the public contract unless implemented and validated as separate packages.
 
-## 10. Security and Compliance
+## 9. Security and Compliance
 
 Rosetta Bridge publishes its trust signals through public GitLab and GitHub checks so contributors can inspect the actual CI configuration, jobs, and reports.
 
-| Signal                      | Coverage                                                                                                                                                          |
-| :-------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| GitLab application security | SAST, Advanced SAST, IaC scanning, Dependency Scanning, Secret Detection, Code Quality, guarded Container Scanning, package audit, and redacted Gitleaks.         |
-| License compliance          | Dependency license inventory is reviewed against [LICENSES.md](LICENSES.md); approval policies are deferred until the GitLab group has enough eligible reviewers. |
-| Repository guards           | GitHub CodeQL, Package Check, Sentry Project Check, CircleCI, and Codecov stay public for cross-provider verification.                                            |
-
-Container scanning is present in CI but only runs when `CS_IMAGE` is configured for a repository that publishes a container image.
-
-## 11. Community
+## 10. Community
 
 ### Who's using it
 
-- **[BabySea](https://babysea.ai)**: the execution control plane for generative media. BabySea's production schema pipeline is the source pattern behind this public TypeScript + JSON Schema normalization boundary.
+- **[BabySea](https://babysea.ai)**: execution control plane for generative media.
 
 *Using `rosetta-bridge`? Open a PR to add yourself.*
-
-### Related projects
-
-- [BabySea SDK](https://github.com/babysea-community/babysea): Execution control plane SDK for generative media.
-- [Adaptive Island](https://github.com/babysea-community/adaptive-island): Cache-first provider selection engine for multi-provider inference workloads.
-- [Ledger Fortress](https://github.com/babysea-community/ledger-fortress): Atomic credit settlement engine for async inference workloads.
 
 ### Contributing
 
 We welcome PRs, issues, and design discussion. See [`CONTRIBUTING.md`](CONTRIBUTING.md), [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md), and [`SECURITY.md`](SECURITY.md).
 
-## 12. License
+## 11. License
 
 [Apache License 2.0](LICENSE). Use it, fork it, ship it.
