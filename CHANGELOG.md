@@ -32,7 +32,7 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 ### Added
 
 - Added a GitLab CI pipeline for TypeScript lint, coverage, build, CLI smoke checks, package validation, dependency audit, secret scanning, Code Quality, SAST, and Dependency Scanning.
-- Added GitLab Codecov provider recognition, Cobertura coverage output, and a README GitLabCI badge.
+- Added GitLab provider recognition, Cobertura coverage output, and a README GitLabCI badge.
 
 ## [0.2.2] - 2026-05-23
 
@@ -51,7 +51,7 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 ### Changed
 
 - Adjusted advisory Snyk Code and IaC scans to avoid GitHub failure annotations while preserving SARIF upload, IaC reporting, and the enforced Open Source test.
-- Constrained GitHub Actions Codecov uploads to the explicit TypeScript LCOV report to avoid irrelevant uploader search warnings.
+- Constrained GitHub Actions uploads to the explicit TypeScript LCOV report to avoid irrelevant uploader search warnings.
 
 ## [0.1.9] - 2026-05-22
 
@@ -60,10 +60,6 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 - Replaced the static Snyk README badge with a realtime Snyk Security workflow status badge.
 
 ## [0.1.8] - 2026-05-22
-
-### Added
-
-- Added repository `codecov.yml` with GitHub Actions provider recognition, CI-gated Codecov status, pull request comment configuration, and TypeScript client path fixes.
 
 ### Changed
 
@@ -80,7 +76,6 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 ### Changed
 
 - Standardized contributing and code-of-conduct guidance with the shared BabySea OSS documentation standard.
-- Upgraded Package Check and CodeQL workflows to Node 24-compatible GitHub Action majors, including Codecov upload via `codecov/codecov-action@v7`.
 
 ## [0.1.5] - 2026-05-22
 
